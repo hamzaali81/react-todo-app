@@ -21,14 +21,27 @@ state = {
      item:'',
      editItem:false
 };
-handleChange=(e)=>{console.log('handle Change');}
-handleSubmit=(e)=>{console.log('handle Submit');}
+handleChange= e =>{this.setState({item: e.target.value})}
+handleSubmit=(e)=>{e.preventDefault();
+const newItem={
+  id:this.state.id,
+  title:this.state.item
+}
+const updatedItems=[...this.state.items,newItem]
+this.setState({
+  items:updatedItems,
+  item:'',
+  id:uuid(),
+  editItem: false
+},()=>console.log(this.state))
+}
 clearList=()=>{console.log("clear list");}
 handleDelete=(id)=>{console.log(`handle Delete ${id}`);}
 handleEdit=(id)=>{console.log(`edit ${id}`);}
 
   render() 
   {
+    // console.log(this.state)
     // console.log(this.state)
         return (
     
